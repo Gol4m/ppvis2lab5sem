@@ -1,0 +1,327 @@
+<FirstScreen>:
+    BoxLayout:
+        padding: 30
+        orientation: 'vertical'
+        Label:
+            text: "Введите ID"
+            color: 0,0,0,1
+            bold: True
+            underline:False
+            font_size: 25
+            size_hint: 1,.8
+        BoxLayout:
+            spacing: 50
+            padding: 30
+            orientation: 'vertical'
+            TextInput:
+                id: id_txt
+                size_hint: 1,.5
+            Button:
+                text: "ВОЙТИ"
+                background_normal: ''
+                background_color: .58, .8, .71, 1
+                color: 0,0,0,1
+                size_hint: 1,.5
+                on_press:root.read_id(id_txt.text), root.show_screen()
+
+<DoctorScreen>
+    BoxLayout:
+        padding: 30
+        spacing: 10
+        orientation: 'vertical'
+        Label:
+            id: id_hello
+            color: 0,0,0,1
+            bold: False
+            underline:True
+            font_size: 15
+            size_hint: 1,.2
+        GridLayout:
+            cols: 5
+            rows: 4
+            Label:
+                text: "ФИО"
+                underline:True
+                size_hint: 1,.6
+                color: 0,0,0,1
+                size_hint: 1,.2
+            Label:
+                text: "Палата"
+                underline:True
+                size_hint: 1,.6
+                color: 0,0,0,1
+                size_hint: 1,.2
+            Label:
+                text: "Статус"
+                underline:True
+                size_hint: 1,.6
+                color: 0,0,0,1
+                size_hint: 1,.2
+            Label:
+                text: "Анализ"
+                underline:True
+                size_hint: 1,.6
+                color: 0,0,0,1
+                size_hint: 1,.2
+            Label:
+                text: "Диагноз"
+                underline:True
+                size_hint: 1,.6
+                color: 0,0,0,1
+                size_hint: 1,.2
+            TextInput:
+                id: id_name
+                text: ""
+            TextInput:
+                id: id_room
+                text: ""
+            TextInput:
+                id: id_status
+                text: ""
+            TextInput:
+                id: id_analysis
+                text: ""
+            TextInput:
+                id: id_diagnosis
+                text: ""
+
+        Button:
+            text: "СОХРАНИТЬ"
+            background_normal: ''
+            background_color: .58, .8, .71, 1
+            color: 0,0,0,1
+            size_hint: 1,.2
+            on_press: root.read_patient(id_name.text), root.read_status(id_status.text), root.read_analysis(id_analysis.text), root.read_diagnosis(id_diagnosis.text)
+
+
+<PatientScreen>
+    BoxLayout:
+        padding: 30
+        spacing: 20
+        orientation: 'vertical'
+        Label:
+            id: id_hello
+            color: 0,0,0,1
+            underline:True
+            font_size: 15
+            size_hint: 1,.1
+        Label:
+            id: id_date
+            color: 0,0,0,.8
+            bold: False
+            font_size: 15
+            size_hint: 1,.1
+        Button:
+            text: "Расписание"
+            background_normal: ''
+            background_color: .58, .8, .71, 1
+            color: 0,0,0,1
+            size_hint: 1,.2
+            on_press: root.show_time_table_screen()
+        Button:
+            text: "  Анализы \nПроцедуры"
+            background_normal: ''
+            background_color: .58, .8, .71, 1
+            color: 0,0,0,1
+            size_hint: 1,.2
+            on_press: root.show_analysis_screen()
+        Button:
+            text: "О диагнозе"
+            background_normal: ''
+            background_color: .58, .8, .71, 1
+            color: 0,0,0,1
+            size_hint: 1,.2
+            on_press: root.show_diagnosis_screen()
+        Button:
+            text: "SOS"
+            background_normal: ''
+            background_color: .85, .33, .31, 1
+            color: 1,1,1,1
+            size_hint: 1,.2
+            on_press: root.send_notification()
+
+<PatientTimeTableScreen>
+    BoxLayout:
+        spacing: 30
+        orientation: 'vertical'
+        Label:
+            text: "\n\nРасписание"
+            color: 0,0,0,1
+            bold: True
+            underline:True
+            font_size: 20
+            size_hint: 1,.2
+            background_color: (0,0,0,.15)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Ellipse:
+                    size: (40,40)
+                    pos: (110, 459)
+        BoxLayout:
+            spacing: 20
+            size_hint: 1,.6
+            orientation: 'vertical'
+            Label:
+                text: "Время                            Что   Где"
+                color: 0,0,0,1
+                background_color: (0,0,0,.15)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            Label:
+                text: "Время                            Что   Где"
+                color: 0,0,0,1
+                background_color: (0,0,0,.15)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            Label:
+                text: "Время                            Что   Где"
+                color: 0,0,0,1
+                background_color: (0,0,0,.15)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            Label:
+                text: "Время                            Что   Где"
+                color: 0,0,0,1
+                background_color: (0,0,0,.15)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+        BoxLayout:
+            padding: 30
+            size_hint: 1,.2
+            Button:
+                text: "SOS"
+                background_normal: ''
+                background_color: .85, .33, .31, 1
+                color: 1,1,1,1
+                on_press: root.send_notification()
+
+<PatientAnalysisScreen>
+    BoxLayout:
+        spacing: 30
+        orientation: 'vertical'
+        Label:
+            text: "  Анализы \nПроцедуры"
+            color: 0,0,0,1
+            bold: True
+            underline:True
+            font_size: 20
+            size_hint: 1,.2
+            background_color: (0,0,0,.15)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Ellipse:
+                    size: (40,40)
+                    pos: (110, 480)
+        BoxLayout:
+            spacing: 20
+            size_hint: 1,.6
+            orientation: 'vertical'
+            Label:
+                id: id_text
+                text:""
+                background_color: (0,0,0,.15)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            Label:
+                id: id_text1
+                text: ""
+                background_color: (0,0,0,.15)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            Label:
+                id: id_text2
+                text: ""
+                background_color: (0,0,0,.15)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            Label:
+                id: id_text3
+                text: ""
+                background_color: (0,0,0,.15)
+                canvas.before:
+                    Color:
+                        rgba: self.background_color
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+        BoxLayout:
+            padding: 30
+            size_hint: 1,.2
+            Button:
+                text: "SOS"
+                background_normal: ''
+                background_color: .85, .33, .31, 1
+                color: 1,1,1,1
+                on_press: root.send_notification()
+
+<PatientDiagnosisScreen>
+    BoxLayout:
+        spacing: 10
+        padding: 20
+        orientation: 'vertical'
+        Label:
+            text: "О диагнозе"
+            color: 0,0,0,1
+            bold: True
+            underline:True
+            font_size: 20
+            size_hint: 1,.2
+            background_color: (0,0,0,.15)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Ellipse:
+                    size: (40,40)
+                    pos: (110, 460)
+        BoxLayout:
+            spacing: 20
+            size_hint: 1,.6
+            orientation: 'vertical'
+            Label:
+                text: "Диагноз \nИнформация о диагнозе "
+                color: 0,0,0,1
+
+
+        BoxLayout:
+            padding: 30
+            size_hint: 1,.2
+            Button:
+                text: "SOS"
+                background_normal: ''
+                background_color: .85, .33, .31, 1
+                color: 1,1,1,1
+                on_press: root.send_notification()
+
+
+
